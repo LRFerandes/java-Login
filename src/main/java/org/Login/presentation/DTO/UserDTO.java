@@ -2,58 +2,67 @@ package org.Login.presentation.DTO;
 
 import java.util.Objects;
 
+import org.Login.model.enums.UserRole;
+import org.antlr.v4.runtime.misc.NotNull;
+
 public class UserDTO {
 	
-	private Integer Id;
 	private String name;
+	@NotNull
 	private String email;
-	public Integer getId() {
-		return Id;
-	}
-	public void setId(Integer id) {
-		Id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	@Override
-	public String toString() {
-		return "UserDTO [Id=" + Id + ", name=" + name + ", email=" + email + "]";
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(Id, email, name);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UserDTO other = (UserDTO) obj;
-		return Objects.equals(Id, other.Id) && Objects.equals(email, other.email) && Objects.equals(name, other.name);
-	}
-	public UserDTO(Integer id, String name, String email) {
+	@NotNull
+	private String password;
+	@NotNull
+	private UserRole role;
+	
+	public UserDTO(String name,String email, String password, UserRole role) {
 		super();
-		Id = id;
 		this.name = name;
 		this.email = email;
+		this.password = password;
+		this.role = role;
 	}
+
 	public UserDTO() {
 		super();
 	}
-	
-	
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

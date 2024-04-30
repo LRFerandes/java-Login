@@ -2,12 +2,22 @@ package org.Login;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class JavaLoginApplication {
+@EnableWebMvc
+public class JavaLoginApplication implements WebMvcConfigurer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(JavaLoginApplication.class, args);
+	}
+	
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+		.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH");
+
 	}
 
 }

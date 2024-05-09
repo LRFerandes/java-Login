@@ -1,7 +1,9 @@
 package org.Login.presentation.Controller;
 
 import org.Login.bussines.service.AuthorizationService;
+import org.Login.bussines.service.RecoverPassword;
 import org.Login.presentation.DTO.AuthetinticationDto;
+import org.Login.presentation.DTO.RecoverPasswordDto;
 import org.Login.presentation.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ public class LoginController {
 	   	@Autowired
 	    public AuthorizationService authorizationService;
 	   	
+	   	@Autowired
+	   	public RecoverPassword recoverPassword;
+	   	
 	   	
 	   	
 
@@ -29,4 +34,10 @@ public class LoginController {
 	    public ResponseEntity<Object> register (@RequestBody UserDTO registerDto){
 	        return authorizationService.register(registerDto);
 	    }
+	    
+	    @PostMapping("/recover")
+	    public ResponseEntity<Object> recover (@RequestBody RecoverPasswordDto recoverDto){
+	        return recoverPassword.recoverPassword(recoverDto);
+	    }
+	    
 }

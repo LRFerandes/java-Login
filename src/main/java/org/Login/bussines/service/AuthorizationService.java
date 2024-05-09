@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class AuthorizationService implements UserDetailsService{
+	
+	
     @Autowired
     private ApplicationContext context;
     
@@ -56,6 +58,8 @@ public class AuthorizationService implements UserDetailsService{
         UserLogin newUser = new UserLogin(registerDto.getName(),registerDto.getEmail(), encryptedPassword, registerDto.getRole());
         newUser.setCreatedAt(new Date(System.currentTimeMillis()));
         this.userRepository.save(newUser);
+        
+        
         return ResponseEntity.ok().build();
     }
 

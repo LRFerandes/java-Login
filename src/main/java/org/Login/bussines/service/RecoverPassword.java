@@ -37,6 +37,7 @@ public class RecoverPassword {
 	    }
 	   
 	   public ResponseEntity<Object> recoverPassword(RecoverPasswordDto dto) {
+		   	if (this.userRepository.findByEmail(dto.getEmail()) == null ) return ResponseEntity.badRequest().build();
 			UserLogin user = (UserLogin) this.userRepository.findByEmail(dto.getEmail());
 			String codigoAcesso = gerarSenha();
 			String encryptedPassword = new BCryptPasswordEncoder().encode(codigoAcesso);
